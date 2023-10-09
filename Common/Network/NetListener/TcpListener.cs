@@ -2,6 +2,7 @@
 using Common.Threading;
 using System.Net;
 using System.Net.Sockets;
+using TcpClient = Common.Network.Clients.TcpClient;
 
 namespace Common.Network.NetListener
 {

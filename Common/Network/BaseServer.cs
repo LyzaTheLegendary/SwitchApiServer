@@ -1,19 +1,31 @@
 ﻿using Common.Network;
 using Common.Network.Clients;
 using Common.Network.NetListener;
+using Common.Threading;
 
 namespace SwitchApiServer
 {
+    public enum ServerType
+    {
+        TCP
+    }
     public class BaseServer
     {
         IListener listener;
-        public BaseServer(string address, int port) { 
-            listener = new TcpListener(address, port);
-            listener.Start(OnConnect);
+        TaskPool pool;
+        public BaseServer(string address, int port, ServerType serverType = ServerType.TCP,int poolSize = 4) {
+            pool = new(poolSize);
+            if(serverType  == ServerType.TCP )
+                listener = new TcpListener(address, port);
+
+            listener?.Start(OnConnect);
         }
+        public void PendTask(Action task)
+           => pool.PendTask(task);
+        
         public virtual void OnConnect(IClient client)
         {
-            ((TcpClient)client).Listen(OnMessage);
+            client.Listen(OnMessage);
         }
         public virtual void OnDisconnect(IClient client)
         {
