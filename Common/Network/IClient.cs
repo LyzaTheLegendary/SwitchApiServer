@@ -7,4 +7,15 @@
         void Disconnect();
         bool Connected();
     }
+    public struct Addr {
+        public readonly string address;
+        public readonly int port;
+        public Addr(string address, int port) {
+            this.address = address;
+            this.port = port;
+        }
+        public override string ToString()
+            => $"{address}:{port}";
+        
+    }
 }

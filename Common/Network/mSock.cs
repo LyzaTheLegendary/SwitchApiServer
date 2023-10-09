@@ -13,8 +13,11 @@ namespace Common.Network {
 #pragma warning restore IDE1006 // Naming Styles
         public mSock(SocketType socketType, ProtocolType protocolType) : base(socketType, protocolType) {
         }
-
         public mSock(AddressFamily addressFamily, SocketType socketType, ProtocolType protocolType) : base(addressFamily, socketType, protocolType) {
+        }
+
+        public mSock(SafeSocketHandle handle) : base(handle)
+        {
         }
 
         public void Send<T>(Header header,T message) {
