@@ -1,9 +1,7 @@
-﻿using Common.Network.Clients;
 
-namespace Common.Network.NetListener
-{
-    public interface IListener {
-        public void Start(Action<IClient> onConnect);
+﻿namespace Common.Network.NetListener {
+    internal interface IListener {
+        public void Start(Action<IClient, Header, byte[]> onRecv);
         public void Stop();
     }
 }
