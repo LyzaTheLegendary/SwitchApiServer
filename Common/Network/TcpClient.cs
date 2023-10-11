@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace Common.Network {
     /// <summary>
-    /// Implements the IClient interface to handle all logic within the class and easily deal with the methods as an IClient to prevent confusion
+    /// Implements the IClient interface to handle all logic within the class and easily deal with the methods as an IClient to prevent confusion 
     /// </summary>
     public class TcpClient : IClient {
         private readonly mSock sock;
